@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointment Status</title>
+<style>
+body {
+    background-color: #000;
+    font-family: Arial, sans-serif;
+    color: #0ff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 40px;
+    margin: 0;
+}
+.container {
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    width: 500px;
+    box-shadow: 0 0 20px #0ff;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #0ff;
+}
+.status-item {
+    background: #222;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 0 5px #0ff;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Appointment Status</h1>
+    <div id="statusList"></div>
+</div>
+
+<script>
+// For demo: get bookings from localStorage
+let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+// Render all bookings
+const statusList = document.getElementById("index.html");
+statusList.innerHTML = bookings.map(b => `
+    <div class="status-item">
+        <strong>${b.name}</strong> - ${b.department} on ${b.date}: <strong>${b.status}</strong>
+    </div>
+`).join('');
+
+// Auto-refresh every 2 seconds to simulate live updates
+setInterval(() => {
+    bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    statusList.innerHTML = bookings.map(b => `
+        <div class="status-item">
+            <strong>${b.name}</strong> - ${b.department} on ${b.date}: <strong>${b.status}</strong>
+        </div>
+    `).join('');
+}, 2000);
+</script>
+</body>
+</html>
+

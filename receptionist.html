@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receptionist Panel</title>
+<style>
+body {
+    background-color: #000;
+    font-family: Arial, sans-serif;
+    color: #0ff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.container {
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    width: 500px;
+    box-shadow: 0 0 20px #0ff;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.booking-item {
+    background: #222;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 5px #0ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    background: #0ff;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #000;
+    box-shadow: 0 0 10px #0ff;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00b8b8;
+    color: #fff;
+    box-shadow: 0 0 20px #0ff;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Receptionist Panel</h1>
+    <div id="bookingsList"></div>
+</div>
+
+<script>
+const form = document.getElementById("receptionist.html");
+
+async function loadBookings(){
+    const res = await fetch('http://192.168.8.38:3000/bookings');
+    const bookings = await res.json();
+
+    bookingsList.innerHTML = bookings.map((b, i) => `
+        <div class="booking-item">
+            <div>
+                <strong>${b.name}</strong> (${b.age} yrs) - ${b.department}<br>
+                Date: ${b.date} [${b.status}]
+            </div>
+        </div>
+    `).join('');
+}
+
+// Refresh every 2 seconds
+setInterval(loadBookings, 2000);
+loadBookings();
+
+</script>
+
+</body>
+</html>

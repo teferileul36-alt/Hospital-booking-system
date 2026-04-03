@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Appointment</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right,#4facfe,#00f2fe);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.container{
+font-size: larger;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    width:350px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input, select{
+    font-size: x-large;
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#4facfe;
+    border:none;
+    color:white;
+    font-size:16px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0077ff;
+}
+
+.footer{
+    text-align:center;
+    margin-top:10px;
+    font-size:12px;
+    color:gray;
+}
+.hospital {
+    font-size: x-large;
+    margin: auto;
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+<h2>Hospital Appointment</h2>
+
+<form>
+<label>Full Name</label>
+<input type="text" placeholder="Enter your name" required>
+
+<label>Phone Number</label>
+<input type="tel" placeholder="Enter your phone number" required>
+
+<label>Select Doctor</label>
+<select required>
+<option value="">Choose Doctor</option>
+<option>Dr. Samuel - General</option>
+<option>Dr. mulat - Dentist</option>
+<option>Dr. Samrwit - Heart Specialist</option>
+<option>Dr. Haile - Pediatrician</option>
+</select>
+
+<label>Select Date</label>
+<input type="date" required>
+
+<label>Select Time</label>
+<input type="time" required>
+
+<button type="submit"><a href="book appointment.html">Book Appointment</a></button>
+
+</form>
+
+<div class="footer">
+Online Hospital Booking System
+</div>
+</div>
+<script>
+let takenAppointments = [
+"2026-03-16 10:30 AM",
+"2026-03-16 11:00 AM"
+];
+
+function checkAppointment(){
+
+let date = document.getElementById("date").value;
+let time = document.getElementById("time").value;
+
+let appointment = date + " " + time;
+
+if(takenAppointments.includes(appointment)){
+
+document.getElementById("message").innerHTML =
+"❌ This appointment is already taken. Please choose another time.";
+
+}else{
+
+// go to confirmation page
+window.location.href = "book appointment.html";
+}
+}
+</script>
+</body>
+</html>

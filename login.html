@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Login</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+   h1 {
+    text-align: center;
+    align-items: center;
+   }
+    body {
+        background-color: black;
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #0ff;
+    }
+    .login-container {
+        background: #111;
+        padding: 50px 40px;
+        border-radius: 20px;
+        width: 500px;
+        box-shadow: 0 0 20px #0ff;
+        align-items: center;
+    }
+    .login-container h1 {
+        margin-bottom: 40px;
+        font-size: 2em;
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+    form {
+        font-size: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    label {
+        text-align: left;
+        font-weight: bold;
+        color: #0ff;
+        text-shadow: 0 0 5px #0ff;
+        font-size: 0.9em;
+    }
+    input {
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        background: #222;
+        color: #fff;
+        transition: 0.3s;
+    }
+    input:focus {
+        box-shadow: 0 0 10px #0ff;
+        background: #333;
+    }
+    button {
+        padding: 14px;
+        background: #0ff;
+        color: #000;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 0 10px #0ff;
+    }
+    button:hover {
+        background: #00b8b8;
+        color: #fff;
+        box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+    }
+    #loginMsg {
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 0.95em;
+        text-shadow: 0 0 5px #0ff;
+    }
+</style>
+</head>
+<body>
+<div class="login-container">
+    <h1>Hospital System</h1>
+    <form id="loginForm">
+        <label for="username">Email</label>
+        <input type="text" id="username" placeholder="Enter Email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+
+        <button type="submit">Login</button>
+    </form>
+    <p id="loginMsg"></p>
+</div>
+
+<script>
+const loginForm = document.getElementById("loginForm");
+const loginMsg = document.getElementById("loginMsg");
+
+loginForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const username = document.getElementById("username").value.toLowerCase();
+
+    if(username === "leulteferi@gmail.com") {
+        window.location.href = "index.html";
+    } else if(username === "mekdim@gmail.com") {
+        window.location.href = "recptionist.html";
+    } else {
+        loginMsg.textContent = "Username not recognized! Use 'patient' or 'receptionist'.";
+        loginMsg.style.color = "red";
+    }
+});
+</script>
+</body>
+</html>
